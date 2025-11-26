@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'My Widget PWA',
-        short_name: 'WidgetPWA',
-        start_url: '/widget',
+        name: 'JustIt',
+        short_name: 'JustIt',
+        start_url: '/',
         display: 'standalone',
         background_color: '#ffffff',
         theme_color: '#ffffff',
@@ -26,19 +26,6 @@ export default defineConfig({
             src: '/pwa-512x512.png',
             sizes: '512x512',
             type: 'image/svg+xml'
-          }
-        ],
-        widgets: [
-          {
-            name: 'Random Word Widget',
-            short_name: 'WordWidget',
-            description: 'Shows random words',
-            id: 'word-widget',
-            path: '/widget',
-            icon: '/pwa-192x192.png',
-            live_data: {
-              type: 'text'
-            }
           }
         ]
       }
