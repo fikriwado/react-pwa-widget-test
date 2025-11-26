@@ -18,14 +18,27 @@ export default defineConfig({
         theme_color: '#ffffff',
         icons: [
           {
-            src: '/pwa-192x192.png.svg',
+            src: '/pwa-192x192.png',
             sizes: '192x192',
             type: 'image/svg+xml'
           },
           {
-            src: '/pwa-512x512.png.svg',
+            src: '/pwa-512x512.png',
             sizes: '512x512',
             type: 'image/svg+xml'
+          }
+        ],
+        widgets: [
+          {
+            name: 'Random Word Widget',
+            short_name: 'WordWidget',
+            description: 'Shows random words',
+            id: 'word-widget',
+            path: '/widget',
+            icon: '/pwa-192x192.png',
+            live_data: {
+              type: 'text'
+            }
           }
         ]
       }
