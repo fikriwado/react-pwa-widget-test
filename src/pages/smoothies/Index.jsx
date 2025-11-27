@@ -9,7 +9,7 @@ const Smoothie = () => {
 
   useEffect(() => {
     const fetchSmoothies = async () => {
-      const { data, error } = await supabase.from('smoothies').select();
+      const { data, error } = await supabase.from('smoothies').select().order('id');
 
       if (error) {
         setSmoothies(null);

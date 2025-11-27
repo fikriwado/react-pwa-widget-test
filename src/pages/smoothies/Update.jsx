@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useImmer } from 'use-immer';
+import { Link, useNavigate, useParams } from 'react-router';
 import supabase from '../../config/supabase';
-import { Link, useNavigate } from 'react-router';
 
 const initialSmoothie = {
   title: '',
@@ -9,10 +9,25 @@ const initialSmoothie = {
   rating: ''
 };
 
-const Create = () => {
+const Update = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const [smoothie, setSmoothie] = useImmer(initialSmoothie);
   const [formError, setFormError] = useState('');
+
+  useEffect(() => {
+    const fetchSmoothie = async () => {
+      const { data, error } = await supabase.from('smoothies').select().eq('id', id).single();
+
+      if (error) navigate('/', { replace: true });
+
+      if (data) {
+        setSmoothie({ ...data });
+      }
+    };
+
+    fetchSmoothie();
+  }, [id, navigate]);
 
   const setFormItem = (e) => {
     const { id: name, value } = e.target;
@@ -24,6 +39,7 @@ const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log(smoothie);
     const isEmpty = Object.values(smoothie).some((v) => !String(v).trim());
 
     if (isEmpty) {
@@ -32,7 +48,8 @@ const Create = () => {
 
     const { data, error } = await supabase
       .from('smoothies')
-      .insert([{ ...smoothie }])
+      .update({ ...smoothie })
+      .eq('id', id)
       .select();
 
     if (error) {
@@ -49,7 +66,7 @@ const Create = () => {
 
   return (
     <div>
-      <h1>Create Data</h1>
+      <h1>Update Data</h1>
       <Link to='/'>All Smoothies</Link>
 
       <br />
@@ -72,7 +89,7 @@ const Create = () => {
         </div>
 
         <div className='mt-5'>
-          <button type='submit'>Create Smoothie</button>
+          <button type='submit'>Update Smoothie</button>
         </div>
 
         {formError && <p className='error'>{formError}</p>}
@@ -81,4 +98,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default Update;

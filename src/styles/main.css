@@ -1,0 +1,19 @@
+.mt-5 {
+  margin-top: 25px;
+}
+
+.smoothie-card {
+  border: 1px solid gray;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+.smoothie-card .title {
+  margin: 0;
+}
+
+.smoothie-card .actions {
+  background-color: #eee;
+  padding: 10px;
+  margin-top: 20px;
+}
