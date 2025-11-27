@@ -2,6 +2,10 @@
   margin-top: 25px;
 }
 
+.me-5 {
+  margin-right: 25px;
+}
+
 .smoothie-card {
   border: 1px solid gray;
   margin: 20px 0;
