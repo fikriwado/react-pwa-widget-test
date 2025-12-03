@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useImmer } from 'use-immer';
-import supabase from '../../config/supabase';
 import { Link, useNavigate } from 'react-router';
+import { useImmer } from 'use-immer';
+import { useState } from 'react';
+import supabase from '../../config/supabase';
 
 const initialSmoothie = {
   title: '',
@@ -49,7 +49,7 @@ const Create = () => {
 
   return (
     <div>
-      <h1>Create Data</h1>
+      <h3>Create Data</h3>
       <Link to='/'>All Smoothies</Link>
 
       <br />

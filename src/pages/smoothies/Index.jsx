@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import supabase from '../../config/supabase';
-import SmoothieCard from '../../components/SmoothieCard';
 import { Link } from 'react-router';
+import { useEffect, useState } from 'react';
+import SmoothieCard from '../../components/SmoothieCard';
+import supabase from '../../config/supabase';
 
 const Smoothie = () => {
   const [smoothies, setSmoothies] = useState(null);
@@ -32,10 +32,9 @@ const Smoothie = () => {
 
   return (
     <>
-      <h1>Smoothie Page</h1>
+      <h3>All Data</h3>
       <Link to='create'>Create Smoothie</Link>
 
-      <br />
       <br />
 
       {fetchError && <p>{fetchError}</p>}

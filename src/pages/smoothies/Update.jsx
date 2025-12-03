@@ -1,6 +1,6 @@
+import { Link, useNavigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { useImmer } from 'use-immer';
-import { Link, useNavigate, useParams } from 'react-router';
 import supabase from '../../config/supabase';
 
 const initialSmoothie = {
@@ -39,7 +39,6 @@ const Update = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(smoothie);
     const isEmpty = Object.values(smoothie).some((v) => !String(v).trim());
 
     if (isEmpty) {
@@ -66,7 +65,7 @@ const Update = () => {
 
   return (
     <div>
-      <h1>Update Data</h1>
+      <h3>Update Data</h3>
       <Link to='/'>All Smoothies</Link>
 
       <br />
